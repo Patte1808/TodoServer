@@ -30,6 +30,15 @@ todoRoute.post(function(req, res) {
   });
 });
 
+todoRoute.get(function(req, res) {
+  Todo.find(function(err, todos) {
+    if(err)
+      res.send(err);
+    
+    res.json(todos);
+  });
+});
+
 app.use('/api', router);
 
 app.listen(port);
